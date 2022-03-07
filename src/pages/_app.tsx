@@ -1,13 +1,17 @@
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
+
+import Layout from '@/layout/Default'
 import store from '@/store'
 
-function MyApp({ Component, pageProps }: AppProps) {
+function AirWebsite({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </Provider>
   )
 }
 
-export default MyApp
+export default AirWebsite
