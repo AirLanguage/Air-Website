@@ -1,5 +1,5 @@
 import setLanguage from 'next-translate/setLanguage'
-import NextLink from '@/material-ui/link'
+import NextLink from '@/layout/material-ui/link'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -16,7 +16,12 @@ function Navbar() {
           <Typography
             variant="h5"
             component="div"
-            sx={{ flexGrow: 1, fontWeight: 600, fontSize: 35 }}
+            sx={{
+              flexGrow: 1,
+              fontWeight: 600,
+              fontFamily: 'Ethnocentric',
+              fontSize: 42,
+            }}
           >
             AIR
           </Typography>
@@ -36,11 +41,7 @@ function Navbar() {
 
           <Typography
             sx={{
-              flexGrow: 1,
-              display: 'flex',
-              justifyContent: 'space-evenly',
               fontSize: 17,
-              textDecoration: 'none',
             }}
           >
             <NextLink href={{ pathname: '/about' }} color="inherit">

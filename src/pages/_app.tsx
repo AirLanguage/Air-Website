@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from '@mui/material/styles'
-import theme from '@/material-ui/theme'
+import theme from '@/layout/material-ui/theme'
 
 import Layout from '@/layout/Default'
 import store from '@/store'

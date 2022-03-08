@@ -1,4 +1,4 @@
-import Navbar from '@/components/Shared/Navbar/Navbar'
+import Navbar from '@/components/Shared/Navbar'
 
 type LayoutProps = {
   children: React.ReactNode
@@ -7,7 +7,7 @@ type LayoutProps = {
 function Layout({ children }: LayoutProps) {
   return (
     <div>
-      <Navbar />
+      {/* <Navbar /> */}
       <main>{children}</main>
     </div>
   )
