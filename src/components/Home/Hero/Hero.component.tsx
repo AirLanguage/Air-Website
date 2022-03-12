@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             alignItems="center"
             columnSpacing={{ xs: 0 }}
           >
-            <div className={styles.avatar}>
+            <div className={styles.logo}>
               <Typography
                 variant="h5"
                 component="div"
@@ -48,7 +48,11 @@ const Navbar: React.FC = () => {
                 className={styles.topWrapperItem}
                 key={page.text}
               >
-                <NextLink color="inherit" underline="none" href={page.link}>
+                <NextLink
+                  color="inherit"
+                  underline="none"
+                  href={`/${page.link}`}
+                >
                   <Typography className={styles.link}>{page.text}</Typography>
                 </NextLink>
               </Grid>

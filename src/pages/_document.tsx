@@ -1,7 +1,6 @@
 import * as React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import createEmotionServer from '@emotion/server/create-instance'
-import createEmotionCache from '@/layout/material-ui/cache'
+import { ServerStyleSheets } from '@mui/styles'
 import theme from '@/layout/material-ui/theme'
 
 export default class MyDocument extends Document {
@@ -17,7 +16,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          {(this.props as any).emotionStyleTags}
         </Head>
         <body>
           <Main />
@@ -29,31 +27,21 @@ export default class MyDocument extends Document {
 }
 
 MyDocument.getInitialProps = async (ctx) => {
+  const sheets = new ServerStyleSheets()
   const originalRenderPage = ctx.renderPage
-
-  const cache = createEmotionCache()
-  const { extractCriticalToChunks } = createEmotionServer(cache)
 
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) =>
-        function EnhanceApp(props) {
-          return <App emotionCache={cache} {...props} />
-        },
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
     })
 
   const initialProps = await Document.getInitialProps(ctx)
-  const emotionStyles = extractCriticalToChunks(initialProps.html)
-  const emotionStyleTags = emotionStyles.styles.map((style) => (
-    <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
-      key={style.key}
-      dangerouslySetInnerHTML={{ __html: style.css }}
-    />
-  ))
 
   return {
     ...initialProps,
-    emotionStyleTags,
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
+    ],
   }
 }

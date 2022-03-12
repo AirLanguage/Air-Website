@@ -21,9 +21,9 @@ const useStyles = makeStyles(() => ({
     justifyContent: 'center',
     alignItems: 'center',
     backdropFilter: 'brightness(0.7)',
-    padding: 10,
+    padding: 20,
   },
-  avatar: {
+  logo: {
     flexGrow: 1,
   },
   wrapper: {
@@ -34,6 +34,9 @@ const useStyles = makeStyles(() => ({
   },
   topWrapper: {
     paddingTop: 10,
+    '@media (max-width: 850px)': {
+      display: 'none',
+    },
   },
   topWrapperItem: {
     paddingRight: 15,
@@ -58,12 +61,20 @@ const useStyles = makeStyles(() => ({
     fontFamily: 'Ethnocentric',
     lineHeight: '90px',
     fontSize: 120,
+    '@media (max-width: 960px)': {
+      fontSize: 90,
+      lineHeight: '60px',
+    },
   },
   slogan: {
     fontSize: 24,
     lineHeight: '24px',
     maxWidth: 700,
     padding: '20px 0',
+    '@media (max-width: 960px)': {
+      fontSize: 18,
+      lineHeight: '18px',
+    },
   },
 }))
 

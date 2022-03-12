@@ -7,7 +7,7 @@ type LayoutProps = {
 function Layout({ children }: LayoutProps) {
   return (
     <div>
-      {/* <Navbar /> */}
+      <Navbar />
       <main>{children}</main>
     </div>
   )
